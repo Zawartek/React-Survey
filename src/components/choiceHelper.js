@@ -8,12 +8,12 @@ const choiceHelper = {
         }
     ],
 
-    updateChoice: (choices, updatedChoiceId) =>
+    updateChoice: (choices, updatedChoiceId, updatedNbVote) =>
         choices.map(c => c.id!==updatedChoiceId
             ? c
             : {
                 ...c,
-                nbVote:c.nbVote
+                nbVote:updatedNbVote
             })
 };
 
