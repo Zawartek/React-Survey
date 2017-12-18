@@ -1,38 +1,57 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 import PropTypes from 'prop-types';
-import { choiceHelper } from './choiceHelper'
 
-class AddChoice extends React.Component {
+
+import '../App.css';
+
+class AddChoice extends Component {
     constructor() {
         super();
 
         this.state = {
-            newChoice: ''
+            newChoice: 'default Value',
+            errorText: ''
         };
     }
 
     render() {
         return(
             <div>
-                <span>Nouveau choix</span>
-                <input type="text" value={this.state.newChoice} onChange={this.changeValue}/>
-                <input type="button" value="Ajouter" onClick={this.addChoice}/>
+                <span>Nouveau choix </span>
+                <TextField
+                    id="text-field-controlled"
+                    model="newChoice"
+                    type="text"
+                    defaultValue={this.state.newChoice}
+                    errorText={this.state.errorText}
+                    onChange={this.changeValue}
+                    className="TextField-class"
+                />
+                <RaisedButton label="Ajouter" onClick={this.addChoice} />
             </div>
         );
     }
 
     changeValue = (e) => {
-        this.setState({newChoice: e.target.value});
+        if (e.target.value.length>0) {
+            this.setState({newChoice: e.target.value, errorText:''});
+        }
+        else {
+            this.setState({errorText: "The text is empty"});
+        }
     }
 
     addChoice = (props) => {
-        this.props.addChoice(this.state.newChoice);
-        this.setState({newChoice: ''});
+            this.props.addChoice(this.state.newChoice);
+            this.setState({newChoice: ''});
     }
 }
 
 AddChoice.propTypes = {
-    value: PropTypes.string.isRequired,
+    newChoice: PropTypes.string.isRequired,
 }
 export {AddChoice};
