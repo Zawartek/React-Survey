@@ -8,12 +8,16 @@ const choiceHelper = {
         }
     ],
 
-    updateChoice: (choices, updatedChoiceId, updatedNbVote) =>
+    updateChoice: (choices, updatedChoiceId, updatedNbVote, nbTotalVote) =>
         choices.map(c => c.id!==updatedChoiceId
-            ? c
+            ? {
+                ...c,
+                percent: (nbTotalVote === 0) ? 0 : Math.round(c.nbVote / nbTotalVote * 100)
+            }
             : {
                 ...c,
-                nbVote:updatedNbVote
+                nbVote: updatedNbVote,
+                percent: (nbTotalVote === 0) ? 0 :Math.round(updatedNbVote / nbTotalVote * 100)
             })
 };
 
