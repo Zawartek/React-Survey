@@ -47,3 +47,19 @@ li {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+#question {
+  font-size: 1.4em;
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
+.intitule {
+  display: inline-block;
+  min-width: 15em;
+}
+
+.percentage {
+  display: inline-block;
+  width: 4em;
+}
