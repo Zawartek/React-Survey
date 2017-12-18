@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
+import { PieChart, Pie, Tooltip, LabelList } from 'recharts';
+
 import Choices from './components/Choices';
 import { defaultChoices } from './components/defaultChoices';
 import { choiceHelper } from './components/choiceHelper'
+import { AddChoice } from './components/AddChoice';
 
 import './App.css';
 
@@ -11,7 +14,8 @@ class App extends Component {
     super();
 
     this.state = {
-      choices: defaultChoices
+      choices: defaultChoices,
+      activeIndex:0
     }
   };
 
@@ -24,15 +28,23 @@ class App extends Component {
         <ul>
           <span>Quel sport fais-tu?</span>
           <Choices choices={this.state.choices} updateChoice={this.updateChoice} />
+          <AddChoice addChoice={this.addChoiceToState}/>
         </ul>
+        
+        <PieChart width={730} height={250}>
+          <Tooltip />
+          <Pie data={this.state.choices} dataKey="nbVote" nameKey="value"
+             cx="50%" cy="50%" outerRadius={50} fill="#8884d8" >
+             <LabelList dataKey="value" position="outside"/>
+            </Pie>
+        </PieChart>
       </div>
     );
   }
 
-  addChoiceToState = () => {
-    this.state.choices.push({
-      id: Math.floor((Math.random * 10000) + 1)
-    })
+  addChoiceToState = (newChoice) => {
+    const updatedChoices = choiceHelper.addChoice(this.state.choices, newChoice);
+    this.setState({ choices: updatedChoices });
   };
 
   updateChoice = (id, updatedNbVote) => {

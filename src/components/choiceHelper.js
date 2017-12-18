@@ -2,9 +2,10 @@ const choiceHelper = {
     addChoice: (choices, newChoiceValue) => [
         ...choices,
         {
-            id: Math.floor((Math.random * 10000)+1),
+            id: choices.length+1,
             value: newChoiceValue,
-            nbVote:0
+            nbVote:0,
+            percent: 0
         }
     ],
 
