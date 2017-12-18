@@ -35,8 +35,9 @@ class App extends Component {
     })
   };
 
-  updateChoice = (id) => {
-    const updatedChoices = choiceHelper.updateChoice(this.state.choices, id);
+  updateChoice = (id, updatedNbVote) => {
+    const updatedChoices = choiceHelper.updateChoice(this.state.choices, id, updatedNbVote);
+    console.log(this.state.choices)
     this.setState({choices:updatedChoices});
   }
 }

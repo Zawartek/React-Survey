@@ -6,7 +6,7 @@ const Choice = (props) => (
     <li key={props.id}>
         <span>{props.value} 
             <input type="number" value={props.nbVote} min="0"
-                onChange={() => props.updateChoice(props.id, props.nbVote)}/>
+                onChange={(e) => props.updateChoice(props.id, Number(e.target.value))}/>
         </span>
     </li>
 )
