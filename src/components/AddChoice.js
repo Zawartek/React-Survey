@@ -52,8 +52,13 @@ class AddChoice extends Component {
     }
 
     addChoice = (props) => {
+        if (this.state.newChoice>0) {
             this.props.addChoice(this.state.newChoice);
             this.setState({newChoice: ''});
+        }
+        else {
+            this.setState({errorText: "La nouvelle réponse est vide"});
+        }
     }
 }
 
