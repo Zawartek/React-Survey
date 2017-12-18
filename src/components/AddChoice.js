@@ -27,6 +27,7 @@ class AddChoice extends Component {
                     model="newChoice"
                     type="text"
                     defaultValue=''
+                    value={this.state.newChoice}
                     hintText="Nouvelle Réponse"
                     errorText={this.state.errorText}
                     onChange={this.changeValue}
