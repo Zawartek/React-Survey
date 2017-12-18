@@ -28,13 +28,13 @@ class App extends Component {
             <h1 className="App-title">Survey</h1>
           </header>
           <ul>
-            <span>Quel sport fais-tu?</span>
+            <span>Quelle souris utilisez-vous?</span>
             <Choices choices={this.state.choices} updateChoice={this.updateChoice} />
             <br/>
             <AddChoice addChoice={this.addChoiceToState}/>
           </ul>
           
-          <PieChart width={500} height={500}>
+          <PieChart width={600} height={600}>
             <Tooltip />
             <Pie data={this.state.choices} dataKey="nbVote" nameKey="value"
               cx="50%" cy="50%" outerRadius={100} fill="#8884d8" >

@@ -27,6 +27,22 @@
   margin-right:20px;
 }
 
+.recharts-wrapper {
+  margin: auto;
+}
+
+.recharts-label {
+  font-weight: bold;
+  font-size: 1em;
+  fill: blue;
+  stroke: none;
+  margin: 2em;
+}
+
+li {
+  list-style-type: none;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

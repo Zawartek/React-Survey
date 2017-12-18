@@ -13,7 +13,7 @@ class AddChoice extends Component {
         super();
 
         this.state = {
-            newChoice: 'default Value',
+            newChoice: '',
             errorText: ''
         };
     }
@@ -26,7 +26,8 @@ class AddChoice extends Component {
                     id="text-field-controlled"
                     model="newChoice"
                     type="text"
-                    defaultValue={this.state.newChoice}
+                    defaultValue=''
+                    hintText="Nouvelle Réponse"
                     errorText={this.state.errorText}
                     onChange={this.changeValue}
                     className="TextField-class"
@@ -38,10 +39,15 @@ class AddChoice extends Component {
 
     changeValue = (e) => {
         if (e.target.value.length>0) {
-            this.setState({newChoice: e.target.value, errorText:''});
+            if (e.target.value == "Logitech G700S") {
+                this.setState({errorText: "Mauvais choix"});
+            }
+            else {
+                this.setState({newChoice: e.target.value, errorText:''});
+            }
         }
         else {
-            this.setState({errorText: "The text is empty"});
+            this.setState({errorText: "La nouvelle réponse est vide"});
         }
     }
 
@@ -52,6 +58,6 @@ class AddChoice extends Component {
 }
 
 AddChoice.propTypes = {
-    newChoice: PropTypes.string.isRequired,
+    newChoice: PropTypes.string,
 }
 export {AddChoice};
