@@ -21,7 +21,7 @@ class AddChoice extends Component {
     render() {
         return(
             <div>
-                <span>Nouveau choix </span>
+                <span>Nouveau choix :</span>
                 <TextField
                     id="text-field-controlled"
                     model="newChoice"
@@ -31,6 +31,7 @@ class AddChoice extends Component {
                     errorText={this.state.errorText}
                     onChange={this.changeValue}
                     className="TextField-class"
+                    style = {{width: 150}}
                 />
                 <RaisedButton label="Ajouter" onClick={this.addChoice} />
             </div>
